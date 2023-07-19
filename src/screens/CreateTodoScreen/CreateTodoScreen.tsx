@@ -1,9 +1,25 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import {TextInput} from 'react-native';
+import { styles } from './styles';
 
-const CreateTodoScreen = () => {
-    console.log("ddd")
-    return <SafeAreaView />
+type TodoScreenProps = {
+  onChangeNote: (text: string) => void;
+  note: string;
 };
 
-export default CreateTodoScreen;
+const CreateTododScreen = (props: TodoScreenProps) => {
+  const {onChangeNote, note} = props;
+
+  return (
+    <TextInput
+      maxLength={200}
+      style={styles.inputText}
+      multiline={true}
+      placeholder="Note"
+      onChangeText={text => onChangeNote(text)}
+      value={note}
+    />
+  );
+};
+
+export default CreateTododScreen;

@@ -1,18 +1,30 @@
 import React from 'react';
-import {Button} from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
+import {styles} from './styles';
 
 export const createTodoOptions = (navigation: {goBack: () => void}) => {
   const headerRight = () => {
-    return <Button title="Save" onPress={() => navigation.goBack()} />;
+    return (
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Text style={styles.optionHandleText}>Save</Text>
+      </TouchableOpacity>
+    );
   };
 
   const headerLeft = () => {
-    return <Button title="Cancel" onPress={() => navigation.goBack()} />;
+    return (
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Text style={styles.optionHandleText}>Cancel</Text>
+      </TouchableOpacity>
+    );
   };
 
   return {
+    headerStyle: styles.headerStyle,
+    headerShown: true,
     headerLeft: headerLeft,
     headerTitle: 'Add note',
     headerRight: headerRight,
+    headerTitleStyle: styles.title,
   };
 };
