@@ -3,6 +3,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import TododListScreen from '../screens/TodoListScreen';
 import CreateTodoScreen from '../screens/CreateTodoScreen';
+import {todoListOptions} from '../screens/TodoListScreen/options';
+import {createTodoOptions} from '../screens/CreateTodoScreen/options';
 
 const Stack = createNativeStackNavigator();
 
@@ -11,14 +13,14 @@ function RootNavigation() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-            name="TododListScreen"
-            component={TododListScreen}
-            options={{title: 'Todo'}}
+          name="TododListScreen"
+          component={TododListScreen}
+          options={({navigation}) => ({...todoListOptions(navigation)})}
         />
         <Stack.Screen
-            name="CreateTodoScreen"
-            component={CreateTodoScreen}
-            options={{title: 'Create'}}
+          name="CreateTodoScreen"
+          component={CreateTodoScreen}
+          options={({navigation}) => ({...createTodoOptions(navigation)})}
         />
       </Stack.Navigator>
     </NavigationContainer>
