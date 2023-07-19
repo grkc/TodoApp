@@ -6,14 +6,18 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-} from 'react-native';
+import RootNavigation from './src/navigation/rootNavigation';
+import { Provider } from 'react-redux';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { store } from './src/redux/store';
 
 function App() {
   return (
-    <SafeAreaView >
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaProvider>
+        <RootNavigation />
+      </SafeAreaProvider>
+    </Provider>
   );
 }
 
